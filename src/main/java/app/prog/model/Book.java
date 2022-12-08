@@ -1,11 +1,11 @@
 package app.prog.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
 
@@ -20,10 +20,13 @@ public class Book {
     TODO-4-b: Should I map it with int ? Fix it if there is a problem
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     private String author;
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer pageNumber;
+    @CreatedDate
     private LocalDate releaseDate;
 
     public boolean hasAuthor() {
